@@ -14,3 +14,24 @@
 	default = simple
 [alias]
 	rape = push --force
+	enchant = add
+	brew = commit
+	pray = commit
+	bless = init
+	spells = status
+	divine = diff
+	grimoire = log
+	necronomicon = log
+	obliterate = reset
+	sacrifice = reset --hard
+	banish = rm
+	excorcize = rm --cached
+	curse = checkout
+	mix = merge
+	conjure = pull
+	cast = push
+	smite = push --force
+	transcend = push
+	runes = show
+	teleport = mv
+	obtain = fetch
