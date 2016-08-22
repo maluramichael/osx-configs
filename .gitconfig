@@ -1,37 +1,15 @@
+[user]
+	name = Michael Malura
+	email = maluramichael@googlemail.com
 [core]
-	excludesfile = /Users/socialbit/.gitignore_global
+	excludesfile = /Users/michaelmalura/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.1/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[user]
-	name = Michael Malura
-	email = michael.malura@socialbit.de
 [push]
-	config = simple
 	default = simple
-[alias]
-	rape = push --force
-	enchant = add
-	brew = commit
-	pray = commit
-	bless = init
-	spells = status
-	divine = diff
-	grimoire = log
-	necronomicon = log
-	obliterate = reset
-	sacrifice = reset --hard
-	banish = rm
-	excorcize = rm --cached
-	curse = checkout
-	mix = merge
-	conjure = pull
-	cast = push
-	smite = push --force
-	transcend = push
-	runes = show
-	teleport = mv
-	obtain = fetch
+[commit]
+	template = /Users/michaelmalura/.stCommitMsg
