@@ -28,9 +28,11 @@ alias hgd='hg diff | $GIT_EDITOR -'
 alias hgo='hg outgoing'
 
 # react-native
-alias packager="./node_modules/react-native/packager/packager.sh --reset-cache"
-alias reactotron="./node_modules/.bin/reactotron"
-
+alias reactotron="node_modules/.bin/reactotron"
+alias packagerrunning="lsof -n -i4TCP:8081 | grep LISTEN"
+alias packagerpid="lsof -n -i4TCP:8081 | grep LISTEN | awk '{print $2}'"
+alias startpackager="./node_modules/react-native/packager/packager.sh --reset-cache"
+alias stoppackager="kill -9 $(lsof -n -i4TCP:8081 | grep node | awk '{print $2}')"
 
 # symfony
 alias sfconsole="php bin/console "
@@ -71,3 +73,6 @@ alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 alias dus='du -sckx * | sort -nr'
 alias webstorm="open -a WebStorm ."
 alias upgrade-pip='pip install --upgrade pip'
+
+# tools
+alias add_project_to_atom='atom -a .'
