@@ -1,28 +1,28 @@
 export LANG=en_US.UTF-8
 
-export HUNTER_HOME="$HOME/.hunter"
+export DEV_HOME="~/Development"
+export PATH="$PATH:$DEV_HOME"
 
-export CUDA_HOME="/Developer/NVIDIA/CUDA-7.5"
+#react
+export REACT_EDITOR=atom
+#export DEBUG="ReactNativePackager:*"
 
 #nvm
 export NVM_DIR="$HOME/.nvm"
-#m
-export PATH=$PATH:/usr/local/m-cli
-#android
-export ANDROID_HOME=/usr/local/opt/android-sdk
-#export PATH="/usr/local/sbin:$PATH"
-#export WORKON_HOME=~/.virtualenvs
-export DEV_HOME="~/Development"
-#export GEM_HOME="$DEV_HOME"
-#export GEM_PATH="$GEM_HOME/.gems"
+
+#love
 export LOVE_HOME="/Applications/love.app/Contents/MacOS"
 
-export ENV_DIR="$HOME/.virtualenvs"
+#android
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
-export PATH="$PATH:$DEV_HOME"
+#virtualenv
+export WORKON_HOME="$HOME/.virtualenvs"
+export ENV_DIR="$WORKON_HOME"
+
+
+export PATH="$PATH:$ANDROID_HOME/platform-tools/"
 export PATH="$PATH:$LOVE_HOME"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="/usr/local/php5/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
-#export HOMEBREW_GITHUB_API_TOKEN=""
-export PATH="$PATH:$CUDA_HOME/bin"
