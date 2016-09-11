@@ -73,6 +73,7 @@ alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 alias dus='du -sckx * | sort -nr'
 alias webstorm="open -a WebStorm ."
 alias upgrade-pip='pip install --upgrade pip'
+alias currentssid='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk "/ SSID/ {print substr(\$0, index(\$0, \$2))}"'
 
 # tools
 alias add_project_to_atom='atom -a .'
