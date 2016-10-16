@@ -1,15 +1,11 @@
 [user]
 	name = Michael Malura
 	email = maluramichael@googlemail.com
-[core]
-	excludesfile = /Users/michaelmalura/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
 	default = simple
-[commit]
-	template = /Users/michaelmalura/.stCommitMsg

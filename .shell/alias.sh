@@ -3,7 +3,7 @@ alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 alias loadrbenv='eval "$(rbenv init -)"'
 
 # git
-alias clean-branches="git stash && git checkout develop && git branch --merged | grep -v master | grep -v develop | xargs git branch -d"
+alias deletemergedbrances="git stash && git checkout develop && git branch --merged | grep -v master | grep -v develop | xargs git branch -d"
 alias g=git
 alias ga='git add'
 alias gb='git branch'
@@ -51,7 +51,7 @@ alias composer4g="php -d memory_limit=4G /usr/local/bin/composer"
 alias hunter-get="wget https://raw.githubusercontent.com/hunter-packages/gate/master/cmake/HunterGate.cmake"
 
 # random tools
-alias mp3-from-youtube="youtube-dl --extract-audio --audio-format mp3 --"
+alias downloadyoutubevideoasmp3="youtube-dl --extract-audio --audio-format mp3 --"
 
 # shell
 alias l='ls -lah'   # Long view, show hidden
@@ -60,8 +60,8 @@ alias ll='ls -lFh'  # Long view, no hidden
 alias reload="source ~/.zshrc"
 
 # Mac Helpers
-alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles YES && killall Finder"
-alias hide_hidden="defaults write com.apple.Finder AppleShowAllFiles NO && killall Finder"
+alias showhiddenfiles="defaults write com.apple.Finder AppleShowAllFiles YES && killall Finder"
+alias hidehiddenfiles="defaults write com.apple.Finder AppleShowAllFiles NO && killall Finder"
 
 # Helpers
 alias grep='grep --color=auto' # Always highlight grep search term
@@ -69,11 +69,8 @@ alias ping='ping -c 5'      # Pings with 5 packets, not unlimited
 alias df='df -h'            # Disk free, in gigabytes, not bytes
 alias du='du -h -c'         # Calculate total disk usage for a folder
 alias clr='clear;echo "Currently logged in on $(tty), as $(whoami) in directory $(pwd)."'
-alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 alias dus='du -sckx * | sort -nr'
-alias webstorm="open -a WebStorm ."
 alias upgrade-pip='pip install --upgrade pip'
-alias currentssid='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk "/ SSID/ {print substr(\$0, index(\$0, \$2))}"'
 
 # tools
-alias add_project_to_atom='atom -a .'
+alias serve='python3 -m http.server 9988'

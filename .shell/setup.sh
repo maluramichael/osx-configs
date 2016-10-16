@@ -1,8 +1,7 @@
-echo 'load rbenv'
+echo 'rbenv...'
 loadrbenv
 rbenv global 2.3.0
-echo 'load using 2.3.0'
 
-echo 'load nvm'
+echo 'nvm...'
 loadnvm
 nvm use stable

@@ -20,7 +20,6 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 export WORKON_HOME="$HOME/.virtualenvs"
 export ENV_DIR="$WORKON_HOME"
 
-
 export PATH="$PATH:$ANDROID_HOME/platform-tools/"
 export PATH="$PATH:$LOVE_HOME"
 export PATH="$PATH:$ANDROID_HOME/tools"
