@@ -4,4 +4,4 @@ rbenv global 2.3.0
 
 echo 'nvm...'
 loadnvm
-nvm use stable
+nvm use --silent stable
