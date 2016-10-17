@@ -5,8 +5,8 @@ echo 'install brew...'
 
 # brew development tools
 echo 'brew development tools...'
-brew install git nvm
-brew cask install rbenv mysqlworkbench iterm2 atom webstorm dash macdown paw
+brew install git nvm rbenv
+brew cask install mysqlworkbench iterm2 atom webstorm dash macdown paw
 
 # brew web
 echo 'brew web...'
@@ -31,3 +31,10 @@ nvm use stable
 
 echo 'node...'
 node install -g nodemon
+
+echo 'rbenv...'
+rbenv install 2.3.0
+rbenv global 2.3.0
+
+echo 'gems...'
+gem install cocoapods jekyll
