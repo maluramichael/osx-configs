@@ -3,7 +3,7 @@
 currentDirectory=$(pwd)
 cd $HOME
 
-mkdir -p .shell .oh-my-zsh/themes
+mkdir -p .oh-my-zsh/themes
 
 ln -sf "$currentDirectory/.shell" .shell
 ln -sf "$currentDirectory/.zshrc" .zshrc
