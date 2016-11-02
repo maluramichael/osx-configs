@@ -14,8 +14,8 @@ brew cask install jdownloader dropbox google-chrome hipchat skype teamviewer
 
 # brew system
 echo 'brew system...'
-brew install ffmpeg
-brew cask install whatpulse adapter blender istat-menus alfred shuttle vlc 1password
+brew install ffmpeg imagemagick graphicsmagick watch
+brew cask install whatpulse adapter blender istat-menus alfred shuttle vlc 1password filezilla
 
 # install other stuff from app store
 # window tidy
