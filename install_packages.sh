@@ -1,13 +1,20 @@
 #!/bin/sh
 echo 'install brew...'
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install caskroom/cask/brew-cask
 
 echo 'brew development tools...'
 brew install git
+brew install git-flow
 brew install nvm
 brew install rbenv
 brew install android-sdk
 brew install python3
+brew install ack
+brew install automake
+brew install cmake
+brew install colordiff
+brew install curl
 
 brew cask install iterm2
 brew cask install atom
@@ -17,6 +24,7 @@ brew cask install dash
 brew cask install macdown
 brew cask install paw
 brew cask install dash
+brew cask install reactotron
 
 echo 'brew web...'
 brew cask install jdownloader
@@ -34,6 +42,7 @@ brew install watch
 brew install wget
 brew install imagemagick
 brew install graphicsmagick
+brew install watchman
 
 brew cask install whatpulse
 brew cask install adapter
@@ -47,6 +56,7 @@ brew cask install cakebrew
 brew cask install charles
 brew cask install love
 brew cask install filezilla
+brew cask install spotify
 
 # install other stuff from app store
 # window tidy
@@ -61,9 +71,10 @@ nvm install stable
 nvm use stable
 
 echo 'node...'
-node install -g nodemon
-node install -g yarn
-node install -g react-native
+npm install -g nodemon
+npm install -g yarn
+npm install -g react-native-cli
+npm install -g reactotron-cli
 
 echo 'rbenv...'
 rbenv install 2.3.0
