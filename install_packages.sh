@@ -15,6 +15,14 @@ brew install automake
 brew install cmake
 brew install colordiff
 brew install curl
+brew install sdl2
+brew install sfml
+brew install doxygen
+brew install awscli
+brew install allegro
+brew install jq
+brew install hub
+brew install httpie
 
 brew cask install iterm2
 brew cask install atom
@@ -37,12 +45,20 @@ brew cask install teamviewer
 brew cask install gitter
 
 echo 'brew system...'
-brew install ffmpeg
+brew install ffmpeg --with-fdk-aac --with-fontconfig --with-freetype --with-frei0r --with-libass --with-libbluray --with-libbs2b --with-libcaca --with-libebur128 --with-libsoxr --with-libssh --with-libtesseract --with-libvidstab --with-libvorbis --with-libvpx --with-opencore-amr --with-openh264 --with-openjpeg --with-openssl --with-opus --with-rtmpdump --with-rubberband --with-schroedinger --with-sdl2 --with-snappy --with-speex --with-tesseract --with-theora --with-tools --with-webp --with-x265 --with-xz --with-zeromq --with-zimg
 brew install watch
 brew install wget
 brew install imagemagick
 brew install graphicsmagick
 brew install watchman
+brew install speedtest_cli
+brew install nmap
+brew install htop
+brew install lftp
+brew install unrar
+brew install irssi
+brew install rename
+brew install trash
 
 brew cask install whatpulse
 brew cask install adapter
@@ -91,6 +107,7 @@ python get-pip.py
 
 echo 'virtualenv...'
 sudo pip3 install virtualenv --upgrade
+pip3 install http-prompt
 
 echo 'reset...'
 cd $HOME

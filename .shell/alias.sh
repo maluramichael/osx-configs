@@ -71,6 +71,7 @@ alias du='du -h -c'         # Calculate total disk usage for a folder
 alias clr='clear;echo "Currently logged in on $(tty), as $(whoami) in directory $(pwd)."'
 alias dus='du -sckx * | sort -nr'
 alias upgrade-pip='pip install --upgrade pip'
+alias rm='trash'
 
 # tools
 alias serve='python3 -m http.server 9988'
