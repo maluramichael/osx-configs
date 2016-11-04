@@ -1,10 +1,10 @@
 #!/bin/sh
 
 #Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0.02
+defaults write NSGlobalDomain KeyRepeat -int 1
 
 #Set a shorter Delay until key repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 5
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 #Disable mouse acceleration
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
