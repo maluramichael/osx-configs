@@ -23,10 +23,12 @@ brew install allegro
 brew install jq
 brew install hub
 brew install httpie
+brew install xmake
 
 brew cask install iterm2
 brew cask install atom
 brew cask install webstorm
+brew cask install clion
 brew cask install datagrip
 brew cask install dash
 brew cask install macdown
