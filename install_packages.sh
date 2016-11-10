@@ -35,6 +35,7 @@ brew cask install macdown
 brew cask install paw
 brew cask install dash
 brew cask install reactotron
+brew cask install docker-toolbox
 
 echo 'brew web...'
 brew cask install jdownloader
