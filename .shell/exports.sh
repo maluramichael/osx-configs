@@ -2,9 +2,12 @@ export LANG=en_US.UTF-8
 
 #homebrew
 export PATH=${HOME}/.homebrew/bin:${PATH}
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
 export DEV_HOME="~/Development"
 export PATH="$PATH:$DEV_HOME"
+
+#docker
 
 #react
 export REACT_EDITOR=atom
