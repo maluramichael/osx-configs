@@ -1,5 +1,5 @@
 echo 'rbenv...'
-loadrbenv
+eval "$(rbenv init -)"
 rbenv global 2.3.0
 
 echo 'nvm...'
