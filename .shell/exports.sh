@@ -31,3 +31,7 @@ export PATH="$PATH:$LOVE_HOME"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="/usr/local/php5/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+if [ -f ~/.credentials.sh ]; then
+    source ~/.credentials.sh
+fi
