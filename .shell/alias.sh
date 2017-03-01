@@ -4,23 +4,15 @@ alias loadrbenv='eval "$(rbenv init -)"'
 
 # git
 alias deletemergedbrances="git stash && git checkout develop && git branch --merged | grep -v master | grep -v develop | xargs git branch -d"
-alias g=git
-alias ga='git add'
-alias gb='git branch'
-alias gba='git branch -a'
-alias gc='git commit -v'
-alias gl='git pull'
-alias gp='git push'
-alias gpf='git push --force'
-alias gst='git status -sb'
-alias gsd='git svn dcommit'
-alias gsr='git svn rebase'
-alias gs='git stash'
-alias gsa='git stash apply'
-alias gr='git stash && git svn rebase && git svn dcommit && git stash pop' # git refresh
-alias gd='git diff | $GIT_EDITOR -'
-alias gmv='git mv'
-alias gho='$(git remote -v 2> /dev/null | grep github | sed -e "s/.*git\:\/\/\([a-z]\.\)*/\1/" -e "s/\.git.*//g" -e "s/.*@\(.*\)$/\1/g" | tr ":" "/" | tr -d "\011" | sed -e "s/^/open http:\/\//g" | uniq)'
+alias b="brew"
+alias bc="b cask"
+alias bci="bc install"
+alias bcs="bc search"
+alias bi="b install"
+alias bs="b search"
+
+# brew
+alias brew-clean-update='brew update && brew cleanup && brew cask cleanup'
 
 # HG ALIASES
 alias hgst='hg status'
@@ -71,7 +63,8 @@ alias du='du -h -c'         # Calculate total disk usage for a folder
 alias clr='clear;echo "Currently logged in on $(tty), as $(whoami) in directory $(pwd)."'
 alias dus='du -sckx * | sort -nr'
 alias upgrade-pip='pip install --upgrade pip'
-alias rm='trash'
 
 # tools
 alias serve='python3 -m http.server 9988'
+
+alias backup='rsync -aPvh'
