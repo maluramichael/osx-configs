@@ -9,3 +9,14 @@
 	trustExitCode = true
 [push]
 	default = simple
+[github]
+	user = maluramichael
+[color]
+	ui = true
+[core]
+	editor = code -w
+[merge]
+	tool = p4merge
+[mergetool]
+	keepTemporaries = false
+	prompt = false
