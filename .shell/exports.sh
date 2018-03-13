@@ -1,36 +1,14 @@
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
 export LANG=en_US.UTF-8
-
-#homebrew
-export PATH=${HOME}/.homebrew/bin:${PATH}
-export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
-
 export DEV_HOME="~/Development"
-export PATH="$PATH:$DEV_HOME"
-
-#docker
-
-#react
-export REACT_EDITOR=atom
-#export DEBUG="ReactNativePackager:*"
-
-#nvm
+export REACT_EDITOR=code
 export NVM_DIR="$HOME/.nvm"
 
-#love
-export LOVE_HOME="/Applications/love.app/Contents/MacOS"
-
-#android
-export ANDROID_HOME=/usr/local/opt/android-sdk
-
-#virtualenv
-export WORKON_HOME="$HOME/.virtualenvs"
-export ENV_DIR="$WORKON_HOME"
-
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export PATH="$PATH:$LOVE_HOME"
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="/usr/local/php5/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
+# android
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_BUILD_TOOLS="$ANDROID_HOME/build-tools/$(ls -t $ANDROID_HOME/build-tools | tail -1)"
+export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_BUILD_TOOLS"
 
 if [ -f ~/.credentials.sh ]; then
     source ~/.credentials.sh
