@@ -11,6 +11,9 @@ export ANDROID_BUILD_TOOLS="$ANDROID_HOME/build-tools/$(ls -t $ANDROID_HOME/buil
 export ANDROID_KEYSTORES="$DEV_HOME/keystores"
 export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_BUILD_TOOLS"
 
+export CARGO_HOME="$HOME/.cargo"
+export PATH="$PATH:$CARGO_HOME/bin"
+
 if [ -f ~/.credentials.sh ]; then
     source ~/.credentials.sh
 fi
