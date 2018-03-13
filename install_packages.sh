@@ -7,6 +7,7 @@ echo 'brew system...'
 brew install zsh zsh-completions
 chsh -s /bin/zsh $USER
 
+brew install wakeonlan
 brew install watch
 brew install wget
 brew install imagemagick
