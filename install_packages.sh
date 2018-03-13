@@ -13,20 +13,20 @@ brew install wget
 brew install imagemagick
 brew install graphicsmagick
 brew install watchman
-brew install speedtest_cli
 brew install nmap
 brew install htop
 brew install unrar
-brew install irssi
+brew install weechat
 brew install rename
 brew install trash
-brew cask install whatpulse
+
 brew cask install adapter
 brew cask install blender
 brew cask install istat-menus
 brew cask install alfred
 brew cask install shuttle
 brew cask install vlc
+brew cask install iina
 brew cask install 1password
 brew cask install cakebrew
 brew cask install charles
@@ -45,9 +45,10 @@ brew install ack
 brew install automake
 brew install cmake
 brew install colordiff
+brew install mitmproxy
 brew install curl
 brew install sdl2
-brew install sfml
+brew install sfml csfml
 brew install doxygen
 brew install awscli
 brew install allegro
@@ -55,30 +56,23 @@ brew install jq
 brew install hub
 brew install httpie
 brew install xmake
-brew install ffmpeg --with-fdk-aac --with-fontconfig --with-freetype --with-frei0r --with-libass --with-libbluray --with-libbs2b --with-libcaca --with-libebur128 --with-libsoxr --with-libssh --with-libtesseract --with-libvidstab --with-libvorbis --with-libvpx --with-opencore-amr --with-openh264 --with-openjpeg --with-openssl --with-opus --with-rtmpdump --with-rubberband --with-schroedinger --with-sdl2 --with-snappy --with-speex --with-tesseract --with-theora --with-tools --with-webp --with-x265 --with-xz --with-zeromq --with-zimg
+brew install ffmpeg
 
 brew cask install java
 brew cask install iterm2
-brew cask install atom
-brew cask install webstorm
-brew cask install clion
-brew cask install datagrip
-brew cask install dash
 brew cask install macdown
 brew cask install paw
 brew cask install dash
-brew cask install reactotron
-brew cask install docker-toolbox
+brew cask install tower
+brew cask install jetbrains-toolbox
+brew cask install visual-studio-code visual-studio-code-insiders
 
 echo 'brew web...'
 brew cask install jdownloader
 brew cask install dropbox
 brew cask install google-chrome
+brew cask install chromium
 brew cask install firefox
-brew cask install hipchat
-brew cask install skype
-brew cask install teamviewer
-brew cask install gitter
 
 # echo 'app store...'
 # window tidy
@@ -96,6 +90,9 @@ open -a /usr/local/Caskroom/battle-net/latest/Battle.net-Setup.app
 
 brew cask install gog-galaxy
 brew cask install league-of-legends
+
+echo 'rust...'
+curl https://sh.rustup.rs -sSf | sh
 
 echo 'reset...'
 cd $HOME
