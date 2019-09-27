@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="devnetik"
+ZSH_THEME="alanpeabody"
 COMPLETION_WAITING_DOTS="true"
 plugins=(
  git
@@ -15,5 +15,6 @@ source ~/.shell/exports.sh
 source ~/.shell/alias.sh
 source ~/.shell/functions.sh
 source ~/.shell/setup.sh
+source ~/.profile
 
 echo 'current ip:' $(ips)
