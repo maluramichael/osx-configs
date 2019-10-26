@@ -5,74 +5,11 @@ brew install caskroom/cask/brew-cask
 
 echo 'brew system...'
 brew install zsh zsh-completions
+
+brew install $(<brew_packages.txt)
+brew cask install $(<brew_cask_packages.txt)
+
 chsh -s /bin/zsh $USER
-
-brew install wakeonlan
-brew install watch
-brew install wget
-brew install imagemagick
-brew install graphicsmagick
-brew install watchman
-brew install nmap
-brew install htop
-brew install unrar
-brew install weechat
-brew install rename
-brew install trash
-
-brew cask install adapter
-brew cask install blender
-brew cask install istat-menus
-brew cask install alfred
-brew cask install shuttle
-brew cask install vlc
-brew cask install iina
-brew cask install 1password
-brew cask install cakebrew
-brew cask install charles
-brew cask install love
-brew cask install filezilla
-brew cask install spotify
-
-echo 'brew development tools...'
-brew install git
-brew install git-flow
-brew install nvm
-brew install rbenv
-brew install android-sdk
-brew install python3
-brew install ack
-brew install automake
-brew install cmake
-brew install colordiff
-brew install mitmproxy
-brew install curl
-brew install sdl2
-brew install sfml csfml
-brew install doxygen
-brew install awscli
-brew install allegro
-brew install jq
-brew install hub
-brew install httpie
-brew install xmake
-brew install ffmpeg
-
-brew cask install java
-brew cask install iterm2
-brew cask install macdown
-brew cask install paw
-brew cask install dash
-brew cask install tower
-brew cask install jetbrains-toolbox
-brew cask install visual-studio-code visual-studio-code-insiders
-
-echo 'brew web...'
-brew cask install jdownloader
-brew cask install dropbox
-brew cask install google-chrome
-brew cask install chromium
-brew cask install firefox
 
 # echo 'app store...'
 # window tidy

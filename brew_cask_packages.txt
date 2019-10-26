@@ -1,0 +1,1 @@
+adapter alfred arduino blender charles coconutbattery dash enpass firefox istat-menus iterm2 java jetbrains-toolbox shuttle spotify transmission virtualbox visual-studio-code vlc wireshark
