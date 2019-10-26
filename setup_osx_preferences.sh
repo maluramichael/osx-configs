@@ -19,15 +19,9 @@ chflags nohidden ~/Library
 mkdir ~/Desktop/Screenshots
 defaults write com.apple.screencapture location ~/Desktop/Screenshots
 
-#Setup Git
-ssh-keygen -t rsa -C "maluramichael@googlemail.com"
-
-# Test connection
-ssh -T git@github.com
-
 # Set git config values
 git config --global user.name "Michael Malura"
-git config --global user.email "maluramichael@googlemail.com"
+git config --global user.email "michael@malura.de"
 git config --global github.user maluramichael
 git config --global github.token YOUR_TOKEN_HERE
 git config --global color.ui true
