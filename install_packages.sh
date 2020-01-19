@@ -1,13 +1,19 @@
 #!/bin/sh
-echo 'install brew...'
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew install caskroom/cask/brew-cask
-
-echo 'brew system...'
-brew install $(<brew_packages.txt)
-brew cask install $(<brew_cask_packages.txt)
-
 chsh -s /bin/zsh $USER
+
+echo 'nvm...'
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+
+echo 'rbenv...'
+sudo port install rbenv
+
+echo 'python...'
+sudo port install python37
+sudo port select --set python python37
+
+echo 'pip...'
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py --user
 
 # echo 'app store...'
 # window tidy
@@ -23,13 +29,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
-
-echo 'games...'
-brew cask install steam
-brew cask install battle-net
-brew cask install gog-galaxy
-
-open -a /usr/local/Caskroom/battle-net/latest/Battle.net-Setup.app
 
 echo 'rust...'
 curl https://sh.rustup.rs -sSf | sh

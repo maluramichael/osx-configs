@@ -2,7 +2,7 @@
   fileMod = false
 [user]
 	name = Michael Malura
-	email = github@malura.me
+	email = michael@malura.de
 [push]
 	default = simple
 [github]
@@ -11,6 +11,7 @@
 	ui = true
 [core]
 	editor = code -w
+	autocrlf = input
 [merge]
 	tool = p4merge
 [mergetool]

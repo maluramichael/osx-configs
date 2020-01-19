@@ -1,5 +1,3 @@
-alias wakevault="wakeonlan 0C:C4:7A:91:91:FD"
-
 # git
 alias remove-merged-branches="git stash && git checkout develop && git branch --merged | grep -v master | grep -v develop | xargs git branch -d"
 

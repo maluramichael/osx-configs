@@ -1,4 +1,4 @@
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin"
 
 export LANG=en_US.UTF-8
 export DEV_HOME="$HOME/development"
@@ -16,9 +16,13 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/development/projects
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
+export LATEX_HOME="/Library/TeX/texbin"
+
 export CARGO_HOME="$HOME/.cargo"
-export PATH="$PATH:$CARGO_HOME/bin"
 
 if [ -f ~/.credentials.sh ]; then
     source ~/.credentials.sh
 fi
+
+export PATH="$HOME/Library/Python/3.7/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$LATEX_HOME:$PATH"
