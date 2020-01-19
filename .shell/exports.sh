@@ -14,7 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/development/projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON="/opt/local/bin/python"
 
 export LATEX_HOME="/Library/TeX/texbin"
 

@@ -1,4 +1,5 @@
 eval "$(rbenv init -)"
-. "/usr/local/opt/nvm/nvm.sh"
 
-source /usr/local/bin/virtualenvwrapper.sh
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+source virtualenvwrapper.sh
