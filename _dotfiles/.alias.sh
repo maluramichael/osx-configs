@@ -48,3 +48,45 @@ alias search='locate / | fzf -m --preview "cat {}"'
 alias reboot="sudo systemctl reboot"
 alias poweroff="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
+
+
+# lulububu
+alias sf="php ./bin/console"
+alias sfcc="sf cache:clear"
+alias sfsu="sf doctrine:schema:update --force"
+alias sfsv="sf doctrine:schema:validate"
+alias sfnd="sf doctrine:database:drop --force && sf doctrine:database:create && sfsu"
+
+alias sf="php ./bin/console"
+alias sfcc="sf cache:clear"
+alias sfsu="sf doctrine:schema:update --force"
+alias sfsv="sf doctrine:schema:validate"
+alias sfnd="sf doctrine:database:drop --force && sf doctrine:database:create && sfsu"
+
+alias dev="git checkout develop && git pull && gulp dev"
+alias dev-rn="git checkout develop && git pull && rn start"
+alias composer4g="php -d memory_limit=4G  /usr/local/bin/composer"
+
+alias git-clean="git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
+
+nb() {
+    clip="$(pbpaste)"
+    [[ $clip =~ "https:\/\/lulububu\.atlassian\.net\/browse\/([A-Z0-9]+-[0-9]+)" ]]
+
+    if [ ! "$match" ]; then
+        echo "Copy Ticket ID first"
+    else
+        if [ "$1" = "b" ]; then
+            git checkout -b "bugfix/$match-$2"
+        elif [ "$1" = "f" ]; then
+            git checkout -b "feature/$match-$2"
+        fi
+    fi
+}
+
+alias rn="react-native"
+alias rnra="rn run-android"
+alias rnri="rn run-ios"
+alias rnrun="rnra && rnri"
+alias fix-glog="cd ./node_modules/react-native/third-party/glog-0.* && ../../scripts/ios-configure-glog.sh && cd ../../../../"
+

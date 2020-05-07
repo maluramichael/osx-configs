@@ -8,6 +8,8 @@ export LANG=en_GB.UTF-8
 export LC_CTYPE=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
 # useful working directories
 export DEV_HOME="$HOME/development"
 export WORKON_HOME="$DEV_HOME/virtualenvs"
@@ -37,3 +39,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # set path variable
 addToPATH "$HOME/.yarn/bin"
 addToPATH "$CARGO_HOME/bin"
+addToPATH "/opt/local/bin"
+addToPATH "$HOME/Library/Python/3.7/bin"
