@@ -1,0 +1,60 @@
+[core]
+	ileMod = false
+[user]
+	name = Michael Malura
+	email = michael@malura.de
+[push]
+	default = simple
+[github]
+	user = maluramichael
+[color]
+	ui = true
+[core]
+	editor = code -w
+[merge]
+	tool = meld
+[mergetool]
+	keepTemporaries = false
+	prompt = false
+[alias]
+	update = "!f(){ git stash save && git pull --rebase && git stash pop; };f"
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+	a = add
+	ap = add -p
+	c = commit --verbose
+	ca = commit -a --verbose
+	cm = commit -m
+	cam = commit -a -m
+	m = commit --amend --verbose
+
+	d = diff
+	ds = diff --stat
+	dc = diff --cached
+
+	s = status -s
+	co = checkout
+	cob = checkout -b
+	# list branches sorted by last modified
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+	# list aliases
+	la = "!git config -l | grep alias | cut -c 7-"
+
+	rao = remote add origin
+	undo-commit = reset --soft HEAD~1
+	stl="stash list"
+	currentTag = tag --points-at HEAD 
+	zip = "!f() { git archive --format=zip -o `git currentTag`.zip HEAD; }; f"
+
+	new = checkout -b
+	sup  = submodule update --init --recursive --remote
+	
+	save = !git add -A && git commit -m 'SAVEPOINT'
+	wip = !git add -u && git commit -m "WIP"
+	undo = reset HEAD~1 --mixed
+	amend = commit -a --amend
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+
+	#This one is also usefule to run merge test before merge to check for any conflicts.
+	mergetest = "!f(){ git merge --no-commit --no-ff \"$1\"; git merge --abort; echo \"Merge aborted\"; };f "
