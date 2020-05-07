@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CORES=$(nproc)
+CORES=4
 export TERMINAL=xterm
 
 # language settings

@@ -4,11 +4,12 @@ set -o pipefail
 set -o nounset
 
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" # script directory
-__dotfiles="_dotfiles/"
+__dotfiles="_dotfiles"
 
 link() {
   from="${__dir%/}/${1}"
-  to="${HOME%/}/${1#${__dotfiles}}"
+  to="${HOME%/}${1#${__dotfiles}}"
+
   if [[ ${1} =~ "/" ]]; then
     directory_structure=$(dirname "$to")
 
@@ -33,5 +34,5 @@ link() {
 (
   echo "Run link script from $__dir"
   cd "$__dir"
-  find "$__dotfiles" -type f | while read -r file; do link "${file}"; done
+  find "$__dotfiles" -type f | while read -r file; do link "$file"; done
 )
