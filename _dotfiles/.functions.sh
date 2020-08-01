@@ -12,7 +12,7 @@ mans() {
   man "$1" | grep -iC2 --color=always "$2" | less
 }
 
-dev() {
+gotodev() {
   [ ! -d "$DEV_HOME" ] && mkdir -p "$DEV_HOME"
   cd "$DEV_HOME" || exit
   ls
@@ -42,3 +42,57 @@ addToPATH() {
     *) PATH="$1:$PATH";; # or PATH="$PATH:$1"
   esac
 }
+
+nb() {
+    clip="$(pbpaste)"
+    [[ $clip =~ "https:\/\/lulububu\.atlassian\.net\/browse\/([A-Z0-9]+-[0-9]+)" ]]
+
+    type=$1
+    shift
+    old="$IFS"
+    IFS='-'
+    description="$*"
+    IFS=$old
+
+    if [ ! "$match" ]; then
+        echo "Copy Ticket ID first"
+    else
+        if [ ! -z "$description" ]; then
+          if [ "$type" = "b" ]; then
+              git checkout -b "bugfix/$match-$description"
+          elif [ "$type" = "f" ]; then
+              git checkout -b "feature/$match-$description"
+          fi
+        fi
+    fi
+}
+
+runtests() {
+  if [ -f package.json ]; then
+    echo "Run npm tests"
+    npm run test --if-present
+  fi
+
+  if [ -f .tools/run-tests.sh ]; then
+    echo "Run lulububu tests"
+    .tools/run-tests.sh
+  elif [ -f bin/simple-phpunit ]; then
+    echo "Run php unit tests"
+    bin/simple-phpunit
+  fi
+}
+
+gb(){
+  if [ $# -eq 0 ]; then
+    git branch | fzf --print0 -m | tr -d '[:space:]*' |xargs -0 -t -o git checkout
+  else
+    git checkout "$@"
+  fi
+}
+
+lfcd() {
+  lf "$@"
+}
+
+zle -N gb; bindkey '^b' gb
+zle -N lfcd; bindkey '^o' lfcd

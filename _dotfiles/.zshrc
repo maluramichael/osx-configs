@@ -2,25 +2,22 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="alanpeabody"
+ZSH_CUSTOM="$HOME/.zsh"
+ZSH_THEME="malura"
 ZSH_TMUX_AUTOSTART=false
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=false
 ZSH_TMUX_UNICODE=true
+AUTO_CD=false
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 COMPLETION_WAITING_DOTS="true"
 plugins=(
-  git github gas
-  node nvm npm
-  pip python virtualenv
-  docker
-  debian
-  extract
-  history
-  rsync
+  nvm
+  fzf
+  z
   zsh-autosuggestions
   zsh-history-substring-search
   zsh-syntax-highlighting

@@ -80,6 +80,27 @@ install_amd_opencl() {
   sudo apt-get install dkms rock-dkms rocm-opencl
 }
 
+install_brew() {
+  brew tap homebrew/cask-fonts
+  brew cask install font-hack-nerd-font
+}
+
+install_rust() {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  rustup toolchain install stable
+
+  cargo install \
+    nomino \
+    fastmod \
+    gitui \
+    grex \
+    hyperfine \
+    lsd \
+    nomino \
+    sd \
+    sic
+}
+
 install_packages
 add_keys
 add_repos
@@ -91,3 +112,5 @@ install_nvm
 install_rust
 install_python
 install_tmux
+install_rust
+install_brew

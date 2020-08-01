@@ -16,6 +16,9 @@ export WORKON_HOME="$DEV_HOME/virtualenvs"
 export PROJECT_HOME="$DEV_HOME/projects"
 export LIBS_HOME="$DEV_HOME/libs"
 export TOOLS_HOME="$HOME/tools"
+export COMPOSER_HOME="$HOME/.composer"
+export SYMFONY_HOME="$HOME/.symfony"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 # react
 export REACT_EDITOR=code
@@ -37,7 +40,4 @@ export INSTALL_PREFIX="$HOME/.local"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # set path variable
-addToPATH "$HOME/.yarn/bin"
-addToPATH "$CARGO_HOME/bin"
-addToPATH "/opt/local/bin"
-addToPATH "$HOME/Library/Python/3.7/bin"
+PATH="$HOME/.yarn/bin:$CARGO_HOME/bin:/opt/local/bin:$HOME/Library/Python/3.7/bin:$COMPOSER_HOME/vendor/bin:$SYMFONY_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
