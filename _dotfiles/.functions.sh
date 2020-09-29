@@ -1,5 +1,11 @@
 #!/bin/bash
 
+changejava() {
+  export JAVA_HOME=$(/usr/libexec/java_home -v$1)
+  echo $JAVA_HOME
+  java --version
+}
+
 ips() {
   ip addr | grep "inet\\b" | awk '{print $2}' | cut -d/ -f1
 }
@@ -63,6 +69,8 @@ nb() {
           elif [ "$type" = "f" ]; then
               git checkout -b "feature/$match-$description"
           fi
+
+          git push --set-upstream origin "feature/$match-$description"
         fi
     fi
 }

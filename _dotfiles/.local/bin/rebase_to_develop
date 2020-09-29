@@ -1,0 +1,24 @@
+#!/bin/bash
+
+CURRENT_BRANCH=$(git branch --show-current)
+CHANGES=$(git status --porcelain -uno)
+
+if [ $CURRENT_BRANCH == 'develop' ]; then
+  echo "You are currently on develop"
+  exit 1
+fi
+
+echo "You are currently on $CURRENT_BRANCH"
+
+if [[ $CHANGES ]]; then
+  git stash push
+fi
+
+git checkout develop
+git pull
+git checkout "$CURRENT_BRANCH"
+git rebase develop
+
+if [[ $CHANGES ]]; then
+  git stash pop
+fi

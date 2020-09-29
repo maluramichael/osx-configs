@@ -1,5 +1,6 @@
 call plug#begin('$DEV_HOME/vim/plugged')
   Plug 'sbdchd/neoformat'
+  Plug 'valloric/youcompleteme', {'do': './install.py'}
   Plug 'junegunn/fzf', { 'do': './install --bin' }
   Plug 'terryma/vim-multiple-cursors'
   Plug 'preservim/nerdtree'

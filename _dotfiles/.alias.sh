@@ -1,5 +1,6 @@
 # git
 alias remove-merged-branches="git stash && git checkout develop && git branch --merged | grep -v master | grep -v develop | xargs git branch -d"
+alias g="git"
 
 # random tools
 alias downloadyoutubevideoasmp3="youtube-dl --extract-audio --audio-format mp3 --"
