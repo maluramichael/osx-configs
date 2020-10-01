@@ -1,0 +1,235 @@
+#!/usr/bin/python3
+
+import re
+import sys
+from string import Template
+import os.path
+from os import path
+import time
+import xml.etree.ElementTree as ET
+
+def writeFile(file_path, content, override=False):
+    if not path.exists(file_path) or override:
+        file = open(file_path, "w")
+        file.write(content)
+        file.close()
+
+
+className = sys.argv[1]
+classNameStartWithLower = className[0].lower() + className[1:]
+tableName = re.sub(r'(?<!^)(?=[A-Z])', '_', className).lower()
+classNameWithSpaces = re.sub(r'(?<!^)(?=[A-Z])', ' ', className)
+repositoryName = f"{className}Repository"
+adminClassName = f"{className}Admin"
+
+entityPath = f"src/Entity/{className}.php"
+repositoryPath = f"src/Repository/{repositoryName}.php"
+adminPath = f"src/Admin/{adminClassName}.php"
+
+timestamp = int(time.time())
+
+parameter = {
+    'tableName': tableName,
+    'className': className,
+    'adminClassName': adminClassName,
+    'repositoryName': repositoryName,
+    'classNameWithSpaces': classNameWithSpaces,
+    'classNameStartWithLower': classNameStartWithLower,
+    'timestamp': timestamp
+}
+
+print('#'*80)
+print(parameter)
+
+########################################################################################################################
+entityTemplate = Template('''<?php
+
+namespace App\\Entity;
+
+use App\Helper\ToString;
+use Doctrine\\ORM\\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
+/**
+ * Class $className
+ *
+ * @package App\\Entity
+ *
+ * @ORM\\Entity(
+ *     repositoryClass="App\\Repository\\$repositoryName"
+ * )
+ *
+ * @ORM\\Table(name="$tableName")
+ *
+ */
+class $className extends ORMEntity
+{
+    /**
+     * $className constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return ToString::createStringByFields($this, ['id']);
+    }
+}
+''')
+########################################################################################################################
+repositoryTemplate = Template('''<?php
+
+namespace App\\Repository;
+
+use Doctrine\\ORM\\EntityRepository;
+
+/**
+ * Class $repositoryName
+ *
+ * @package App\\Repository
+ */
+class $repositoryName extends EntityRepository
+{
+}
+''')
+########################################################################################################################
+adminTemplate = Template('''<?php
+namespace App\\Admin;
+
+use App\\Admin\\Form\\IndentedDatagridMapper;
+use App\\Admin\\Form\\IndentedFormMapper;
+use App\\Admin\\Form\\IndentedListMapper;
+use App\\Admin\\Form\\IndentedShowMapper;
+use App\\Entity\\Enums\\ExampleType;
+use App\\Form\\Types;
+use Doctrine\\Common\\Collections\\Criteria;
+
+/**
+ * Class $adminClassName
+ *
+ * @package App\\Admin
+ */
+class $adminClassName extends BaseAdmin
+{
+    /**
+     * @var array
+     */
+    protected $datagridValues = [
+        '_page'       => 1,
+        '_sort_order' => Criteria::ASC,
+        '_sort_by'    => 'id',
+    ];
+
+    /**
+     * @param IndentedDatagridMapper $datagridMapper
+     * @return void
+     */
+    protected function configureDatagridFiltersIndention(IndentedDatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+        ;
+    }
+
+    /**
+     * @param IndentedListMapper $listMapper
+     * @return void
+     */
+    protected function configureListFieldsIndention(IndentedListMapper $listMapper)
+    {
+        $listMapper
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+        ;
+
+        $this->addDefaultActions($listMapper);
+    }
+
+    /**
+     * @param IndentedFormMapper $formMapper
+     * @return void
+     */
+    protected function configureFormFieldsIndention(IndentedFormMapper $formMapper)
+    {
+        $formMapper
+            ->addDisabled('id')
+            ->addDisabled('createdAt')
+            ->addDisabled('updatedAt')
+        ;
+    }
+
+    /**
+     * @param IndentedShowMapper $showMapper
+     * @return void
+     */
+    protected function configureShowFieldsIndention(IndentedShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+        ;
+    }
+}
+''')
+########################################################################################################################
+translationTemplate = Template('''
+<trans-unit id="t${timestamp}000">
+    <source>$className</source>
+    <target>$className</target>
+</trans-unit>
+<trans-unit id="${timestamp}001">
+    <source>$classNameWithSpaces Create</source>
+    <target>$className erstellen</target>
+</trans-unit>
+<trans-unit id="${timestamp}002">
+    <source>$classNameWithSpaces Delete</source>
+    <target>$className löschen</target>
+</trans-unit>
+<trans-unit id="${timestamp}003">
+    <source>$classNameWithSpaces List</source>
+    <target>$className</target>
+</trans-unit>
+''')
+########################################################################################################################
+adminYamlTemplate = Template('''admin.$classNameStartWithLower:
+    class:  App\Admin\$adminClassName
+    arguments: [ ~, App\Entity\$className, App\Controller\BaseCRUDController ]
+    tags:
+        - {
+            name:         sonata.admin,
+            manager_type: orm,
+            label:        $className,
+            group:        Data
+        }
+    public: true
+''')
+
+########################################################################################################################
+
+entityFileContent = entityTemplate.safe_substitute(parameter)
+repositoryFileContent = repositoryTemplate.safe_substitute(parameter)
+adminFileContent = adminTemplate.safe_substitute(parameter)
+
+########################################################################################################################
+
+writeFile(entityPath, entityFileContent, False)
+writeFile(repositoryPath, repositoryFileContent, False)
+writeFile(adminPath, adminFileContent, False)
+
+########################################################################################################################
+
+print('#'*80)
+print(adminYamlTemplate.safe_substitute(parameter))
+
+print('#'*80)
+print(translationTemplate.safe_substitute(parameter))
+
+########################################################################################################################
