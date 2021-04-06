@@ -81,3 +81,5 @@ alias fix-glog="cd ./node_modules/react-native/third-party/glog-0.* && ../../scr
 alias bt="php ./app/nut"
 alias btcc="bt cache:clear"
 alias ext-re="rm -rf extensions/vendor && composer update -d extensions"
+
+alias bruh="brew"

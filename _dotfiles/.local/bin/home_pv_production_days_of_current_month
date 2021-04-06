@@ -1,0 +1,8 @@
+#!/bin/bash
+
+QUERY="q=SELECT sum(avg) / 12 FROM power WHERE (type = 'production' AND source = 'pv') GROUP BY time(1d)"
+JQ=( jq -r ".results[].series[].values|map(.[1]|round)|reverse|join(\", \")" )
+RESPONSE=$($HOME/.local/bin/home_query_influx "$QUERY")
+VALUE=$(echo "$RESPONSE" | "${JQ[@]}" )
+
+echo "PV production this month per day: $VALUE"

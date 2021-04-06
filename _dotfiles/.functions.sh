@@ -49,32 +49,6 @@ addToPATH() {
   esac
 }
 
-nb() {
-    clip="$(pbpaste)"
-    [[ $clip =~ "https:\/\/lulububu\.atlassian\.net\/browse\/([A-Z0-9]+-[0-9]+)" ]]
-
-    type=$1
-    shift
-    old="$IFS"
-    IFS='-'
-    description="$*"
-    IFS=$old
-
-    if [ ! "$match" ]; then
-        echo "Copy Ticket ID first"
-    else
-        if [ ! -z "$description" ]; then
-          if [ "$type" = "b" ]; then
-              git checkout -b "bugfix/$match-$description"
-          elif [ "$type" = "f" ]; then
-              git checkout -b "feature/$match-$description"
-          fi
-
-          git push --set-upstream origin "feature/$match-$description"
-        fi
-    fi
-}
-
 runtests() {
   if [ -f package.json ]; then
     echo "Run npm tests"
@@ -101,6 +75,3 @@ gb(){
 lfcd() {
   lf "$@"
 }
-
-zle -N gb; bindkey '^b' gb
-zle -N lfcd; bindkey '^o' lfcd

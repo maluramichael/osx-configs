@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# find large files in git repo
 
 # work over each commit and append all files in tree to $tempFile
 tempFile=$(mktemp)

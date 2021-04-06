@@ -1,0 +1,27 @@
+#!/bin/bash
+# Create a new branch from clipboard
+
+clip="$(pbpaste)"
+[[ $clip =~ "https:\/\/lulububu\.atlassian\.net\/browse\/([A-Z0-9]+-[0-9]+)" ]]
+
+type=$1
+shift
+old="$IFS"
+IFS='-'
+description="$*"
+IFS=$old
+
+if [ ! "$match" ]; then
+    echo "Copy Ticket ID first"
+else
+    if [ ! -z "$description" ]; then
+        if [ "$type" = "b" ]; then
+            git checkout -b "bugfix/$match-$description"
+            git push --set-upstream origin "bugfix/$match-$description"
+        elif [ "$type" = "f" ]; then
+            git checkout -b "feature/$match-$description"
+            git push --set-upstream origin "feature/$match-$description"
+        fi
+
+    fi
+fi

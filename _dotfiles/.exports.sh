@@ -19,6 +19,11 @@ export TOOLS_HOME="$HOME/tools"
 export COMPOSER_HOME="$HOME/.composer"
 export SYMFONY_HOME="$HOME/.symfony"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
+export GOPATH="$DEV_HOME/go"
+
+if command -v go &> /dev/null; then
+    export GOBIN=$(go env GOPATH)/bin
+fi
 
 # react
 export REACT_EDITOR=code
@@ -40,4 +45,6 @@ export INSTALL_PREFIX="$HOME/.local"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # set path variable
-PATH="$HOME/.yarn/bin:$CARGO_HOME/bin:/opt/local/bin:$HOME/Library/Python/3.7/bin:$COMPOSER_HOME/vendor/bin:$SYMFONY_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
+PATH="$HOME/Library/Python/3.8/bin:/usr/local/opt/php@7.4/bin:$HOME/.yarn/bin:$CARGO_HOME/bin:/opt/local/bin:$COMPOSER_HOME/vendor/bin:$SYMFONY_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
+
+fpath=(~/.local/bin/completions $fpath)

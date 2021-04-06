@@ -4,9 +4,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_CUSTOM="$HOME/.zsh"
 ZSH_THEME="malura"
-ZSH_TMUX_AUTOSTART=false
+ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_AUTOCONNECT=false
+ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_UNICODE=true
 AUTO_CD=false
 
@@ -15,7 +15,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 COMPLETION_WAITING_DOTS="true"
 plugins=(
-  nvm
+  tmux
   fzf
   z
   zsh-autosuggestions

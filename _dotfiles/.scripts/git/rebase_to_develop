@@ -1,4 +1,5 @@
 #!/bin/bash
+# stash push, switch to develop, pull, stash pop
 
 CURRENT_BRANCH=$(git branch --show-current)
 CHANGES=$(git status --porcelain -uno)
