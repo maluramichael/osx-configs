@@ -34,7 +34,7 @@ else
   echo
 fi
 no_commands=1
-for file in $(find "$dir" -maxdepth 1 -mindepth 1 -exec test -x {} \; -print); do
+for file in $(find "$dir" -maxdepth 1 -mindepth 1 -exec test -x {} \; -print | sort); do
   command=$(basename "$file")
   helpfile="$file.help"
   help=""
@@ -49,9 +49,9 @@ for file in $(find "$dir" -maxdepth 1 -mindepth 1 -exec test -x {} \; -print); d
   # the longest filename instead of hardcoding the spacing...
   # but oh well whatever
   if [[ -d "$file" ]]; then
-    command="$command ..."
+    command="|- $command"
   fi
-  printf '%-10s -- %s\n' "$command" "$help"
+  printf '%-25s -- %s\n' "$command" "$help"
   no_commands=0
 done
 

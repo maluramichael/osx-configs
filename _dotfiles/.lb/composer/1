@@ -1,0 +1,9 @@
+#!/bin/bash
+# Run latest composer 1 version
+
+mkdir -p /tmp/.composer1
+
+docker run --rm --name composer1 \
+    --volume $PWD:/app \
+    --volume /tmp/.composer1:/tmp \
+    composer:1 $@
