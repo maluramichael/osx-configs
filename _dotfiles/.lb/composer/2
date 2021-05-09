@@ -1,9 +1,0 @@
-#!/bin/bash
-# Run latest composer 2 version
-
-mkdir -p /tmp/.composer2
-
-docker run --rm --name composer2 \
-    --volume $PWD:/app \
-    --volume /tmp/.composer2:/tmp \
-    composer:2 $@

@@ -75,3 +75,7 @@ gb(){
 lfcd() {
   lf "$@"
 }
+
+reload() {
+  source ~/.zshrc
+}

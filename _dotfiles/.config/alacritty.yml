@@ -34,11 +34,11 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 10
+    y: 10
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: true
+  dynamic_padding: false
 
   # Window decorations
   #
@@ -49,7 +49,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  #decorations: full
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -80,7 +80,7 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  #history: 10000
+  history: 0
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -285,10 +285,10 @@ colors: *dark
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
 # When set to `true`, selected text will be copied to the primary clipboard.
-#save_to_clipboard: false
+save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
-#dynamic_title: true
+dynamic_title: true
 
 #cursor:
 # Cursor style
@@ -297,14 +297,14 @@ colors: *dark
 #   - ▇ Block
 #   - _ Underline
 #   - | Beam
-#style: Block
+style: Block
 
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
 #unfocused_hollow: true
 
 # Live config reload (changes require restart)
-#live_config_reload: true
+live_config_reload: true
 
 # Shell
 #
@@ -324,7 +324,7 @@ colors: *dark
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-#working_directory: None
+working_directory: None
 
 # WinPTY backend (Windows only)
 #
@@ -339,9 +339,9 @@ colors: *dark
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
-#debug:
-# Display the time it takes to redraw each frame.
-#render_timer: false
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
 
 # Keep the log file after quitting Alacritty.
 #persistent_logging: false
@@ -519,7 +519,9 @@ colors: *dark
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
-#key_bindings:
+key_bindings:
+  - { key: R, mods: Alt, chars: "\x1b[24;3~" }
+
 # (Windows, Linux, and BSD only)
 #- { key: V,        mods: Control|Shift, action: Paste            }
 #- { key: C,        mods: Control|Shift, action: Copy             }

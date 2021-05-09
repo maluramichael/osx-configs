@@ -12,6 +12,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
 # useful working directories
 export DEV_HOME="$HOME/development"
+export WORK_HOME="$DEV_HOME/lulububu"
 export WORKON_HOME="$DEV_HOME/virtualenvs"
 export PROJECT_HOME="$DEV_HOME/projects"
 export LIBS_HOME="$DEV_HOME/libs"
@@ -46,5 +47,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # set path variable
 PATH="$HOME/Library/Python/3.8/bin:/usr/local/opt/php@7.4/bin:$HOME/.yarn/bin:$CARGO_HOME/bin:/opt/local/bin:$COMPOSER_HOME/vendor/bin:$SYMFONY_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
+CDPATH="$CDPATH:$PROJECT_HOME:$TOOLS_HOME:$WORK_HOME:$HOME"
 
 fpath=(~/.local/bin/completions $fpath)
