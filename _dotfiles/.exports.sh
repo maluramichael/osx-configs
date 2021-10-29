@@ -47,7 +47,7 @@ export INSTALL_PREFIX="$HOME/.local"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # set path variable
-PATH="$HOME/Library/Python/3.8/bin:/usr/local/opt/php@7.4/bin:$HOME/.yarn/bin:$CARGO_HOME/bin:/opt/local/bin:$COMPOSER_HOME/vendor/bin:$SYMFONY_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
+PATH="/opt/homebrew/bin:$HOME/Library/Python/3.8/bin:/usr/local/opt/php@7.4/bin:$HOME/.yarn/bin:$CARGO_HOME/bin:/opt/local/bin:$COMPOSER_HOME/vendor/bin:$SYMFONY_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
 CDPATH="$CDPATH:$PROJECT_HOME:$TOOLS_HOME:$WORK_HOME:$HOME"
 
 fpath=(~/.local/bin/completions $fpath)

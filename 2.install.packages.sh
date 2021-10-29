@@ -5,112 +5,57 @@ set -o nounset
 
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" # script directory
 
-install_packages() {
-  PACKAGES=$(cat ${__dir}/apt.packages.list | awk '{ print $2 }')
-  echo "$PACKAGES" | xargs sudo apt-get install -y
-  sudo apt install "linux-headers-$(uname -r)"
-}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh) --unattended"
 
-add_keys() {
-  # Yarn
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  # VSCode
-  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg
-  sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-  # Scala
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-  # amd opencl
-  wget -qO - http://repo.radeon.com/rocm/apt/debian/rocm.gpg.key | sudo apt-key add -
-}
+# ZSH Plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+git clone https://github.com/Sparragus/zsh-auto-nvm-use ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-auto-nvm-use
 
-add_repos() {
-  # Yarn
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  # VSCode
-  sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-  # Scala
-  echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-  # amd opencl
-  echo 'deb [arch=amd64] http://repo.radeon.com/rocm/apt/debian/ xenial main' | sudo tee /etc/apt/sources.list.d/rocm.list
-}
+mkdir $NVM_DIR
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install stable
+nvm use stable
 
-install_zsh() {
-  # ZSH
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh) --unattended"
+brew install python3
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py --user
+python3 -m pip install --upgrade pip
+python3 -m pip install virtualenv --user
+python3 -m pip install http-prompt --user
 
-  # Ohy my zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-  # ZSH Plugins
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
-  git clone https://github.com/Sparragus/zsh-auto-nvm-use ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-auto-nvm-use
-}
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup toolchain install stable
 
-install_nvm() {
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
-  nvm install stable
-  nvm use stable
-  (cd "$NVM_DIR" && git pull origin)
-}
+cargo install \
+  nomino \
+  fastmod \
+  gitui \
+  grex \
+  hyperfine \
+  lsd \
+  nomino \
+  sd \
+  sic
 
-install_rust() {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-}
+brew install $(cat brew_packages.txt | xargs)
 
-install_python() {
-  # thanks to https://linuxconfig.org/how-to-change-default-python-version-on-debian-9-stretch-linux
-  sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
-  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 2
+sudo softwareupdate --install-rosetta
+sudo xcodebuild -license accept
 
-  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-  python get-pip.py --user
-  pip install --upgrade pip
-  pip install virtualenv --user
-  pip install http-prompt --user
-}
+brew install --cask $(cat brew_cask_packages.txt | xargs)
 
-install_tmux() {
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-}
 
-install_amd_opencl() {
-  sudo apt-get install dkms rock-dkms rocm-opencl
-}
+https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64
 
-install_brew() {
-  brew tap homebrew/cask-fonts
-  brew cask install font-hack-nerd-font
-}
-
-install_rust() {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  rustup toolchain install stable
-
-  cargo install \
-    nomino \
-    fastmod \
-    gitui \
-    grex \
-    hyperfine \
-    lsd \
-    nomino \
-    sd \
-    sic
-}
-
-install_packages
-add_keys
-add_repos
-
-sudo apt-get update -y
-
-install_zsh
-install_nvm
-install_rust
-install_python
-install_tmux
-install_rust
-install_brew
+mas install 824183456 # affinity photo
+mas install 824171161 # affinity designer
+mas install 405843582 # alfred
+mas install 872698314 # money money
+mas install 1384080005 # tweetbot

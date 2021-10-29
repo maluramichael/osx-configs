@@ -1,1 +1,25 @@
-adapter alfred arduino blender charles coconutbattery dash enpass firefox istat-menus iterm2 java jetbrains-toolbox shuttle spotify transmission virtualbox visual-studio-code vlc wireshark
+adapter
+alfred
+arduino
+blender
+charles
+coconutbattery
+dash
+enpass
+firefox
+forklift
+cutter
+godot
+google-chrome
+istat-menus
+iterm2
+jetbrains-toolbox
+shuttle
+spotify
+transmission
+vlc
+wireshark
+cmake
+doxygen
+jasper
+snappy
