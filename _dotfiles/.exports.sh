@@ -24,6 +24,7 @@ export GOPATH="$DEV_HOME/go"
 
 if command -v go &> /dev/null; then
     export GOBIN=$(go env GOPATH)/bin
+    PATH="$GOBIN:$PATH"
 fi
 
 # react

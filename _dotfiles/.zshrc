@@ -1,6 +1,8 @@
 #!/bin/bash
 
 export ZSH="$HOME/.oh-my-zsh"
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
 
 ZSH_CUSTOM="$HOME/.zsh"
 ZSH_THEME="malura"
