@@ -61,3 +61,7 @@ mas install 405843582 # alfred
 mas install 872698314 # money money
 mas install 1384080005 # tweetbot
 mas install 1529448980 # reeder 5
+mas install 1333542190 # 1password
+mas install 1436522307 # transmit
+mas install 1295203466 # ms remote desktop
+mas install 425424353 # unarchiver

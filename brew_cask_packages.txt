@@ -10,6 +10,7 @@ dash
 enpass
 firefox
 forklift
+discord
 cutter
 godot
 google-chrome
