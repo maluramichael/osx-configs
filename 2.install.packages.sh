@@ -51,6 +51,7 @@ sudo xcodebuild -license accept
 
 brew install --cask $(cat brew_cask_packages.txt | xargs)
 
+pecl install xdebug
 
 https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64
 
@@ -59,3 +60,4 @@ mas install 824171161 # affinity designer
 mas install 405843582 # alfred
 mas install 872698314 # money money
 mas install 1384080005 # tweetbot
+mas install 1529448980 # reeder 5

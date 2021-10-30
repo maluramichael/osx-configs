@@ -1,3 +1,4 @@
+php@7.4
 ack
 allegro
 ansible

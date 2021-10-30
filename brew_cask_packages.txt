@@ -2,6 +2,8 @@ adapter
 alfred
 arduino
 blender
+bartender
+obs
 charles
 coconutbattery
 dash
@@ -15,6 +17,7 @@ istat-menus
 iterm2
 jetbrains-toolbox
 shuttle
+slack
 spotify
 transmission
 vlc

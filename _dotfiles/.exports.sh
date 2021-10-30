@@ -21,6 +21,7 @@ export COMPOSER_HOME="$HOME/.composer"
 export SYMFONY_HOME="$HOME/.symfony"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export GOPATH="$DEV_HOME/go"
+export PHP_PATH="/opt/homebrew/opt/php@7.4"
 
 if command -v go &> /dev/null; then
     export GOBIN=$(go env GOPATH)/bin
@@ -47,7 +48,7 @@ export INSTALL_PREFIX="$HOME/.local"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # set path variable
-PATH="/opt/homebrew/bin:$HOME/Library/Python/3.8/bin:/usr/local/opt/php@7.4/bin:$HOME/.yarn/bin:$CARGO_HOME/bin:/opt/local/bin:$COMPOSER_HOME/vendor/bin:$SYMFONY_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
+PATH="$PHP_PATH/bin:$PHP_PATH/sbin:/opt/homebrew/bin:$HOME/Library/Python/3.8/bin:/usr/local/opt/php@7.4/bin:$HOME/.yarn/bin:$CARGO_HOME/bin:/opt/local/bin:$COMPOSER_HOME/vendor/bin:$SYMFONY_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
 CDPATH="$CDPATH:$PROJECT_HOME:$TOOLS_HOME:$WORK_HOME:$HOME"
 
 fpath=(~/.local/bin/completions $fpath)
