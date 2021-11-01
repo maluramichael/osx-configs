@@ -6,6 +6,7 @@ bartender
 obs
 charles
 coconutbattery
+jdownloader
 dash
 enpass
 firefox
@@ -26,4 +27,5 @@ wireshark
 cmake
 doxygen
 jasper
+filebot
 snappy
