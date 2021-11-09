@@ -1,4 +1,3 @@
-php@7.4
 ack
 allegro
 ansible
@@ -26,6 +25,7 @@ fontconfig
 freetype
 frei0r
 fribidi
+fzf
 gcc
 gcc@6
 gdbm
@@ -42,8 +42,6 @@ graphite2
 harfbuzz
 hexyl
 htop
-fzf
-tmux
 httpie
 hub
 icu4c
@@ -52,7 +50,7 @@ imagemagick
 isl
 jpeg
 jq
-mas
+homebrew/cask-drivers/elgato-camera-hub
 lame
 leptonica
 libass
@@ -84,6 +82,7 @@ libyaml
 little-cms2
 lua
 lzo
+mas
 mitmproxy
 mpfr
 nasm
@@ -105,6 +104,7 @@ p7zip
 pcre
 pcre2
 perl
+php@7.4
 physfs
 pixman
 pkg-config
@@ -120,19 +120,20 @@ rtmpdump
 rubberband
 ruby-build
 sdl
+sdl_gfx
+sdl_image
+multitail
+sdl_mixer
+sdl_net
+sdl_rtf
+sdl_sound
+sdl_ttf
 sdl2
 sdl2_gfx
 sdl2_image
 sdl2_mixer
 sdl2_net
 sdl2_ttf
-sdl_gfx
-sdl_image
-sdl_mixer
-sdl_net
-sdl_rtf
-sdl_sound
-sdl_ttf
 sfml
 shared-mime-info
 speex
@@ -142,6 +143,7 @@ swig
 tesseract
 theora
 tig
+tmux
 tokyo-cabinet
 trash
 tree
@@ -157,6 +159,7 @@ x265
 xmake
 xvid
 xz
+yamllint
 yarn
 zsh
 zsh-completions

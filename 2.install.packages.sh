@@ -55,6 +55,7 @@ pecl install xdebug
 
 https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64
 
+
 mas install 824183456 # affinity photo
 mas install 824171161 # affinity designer
 mas install 405843582 # alfred
@@ -65,3 +66,7 @@ mas install 1333542190 # 1password
 mas install 1436522307 # transmit
 mas install 1295203466 # ms remote desktop
 mas install 425424353 # unarchiver
+
+# vim plugins
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qall
