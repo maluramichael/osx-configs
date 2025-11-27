@@ -4,14 +4,19 @@
 	name = Michael Malura
 	email = michael@malura.de
 [push]
-	default = simple
+	default = current
+	autoSetupRemote = true
 [github]
 	user = maluramichael
+	token = YOUR_TOKEN_HERE
 [color]
-	ui = true
+	ui = auto
 [core]
 	editor = vim
 	autocrlf = input
+	excludesfile = /Users/michael/.gitignore_global
+	attributesfile = ~/.gitattributes
+	ignorecase = false
 [merge]
 	tool = meld
 [mergetool]
@@ -21,6 +26,7 @@
 	u = "!f(){ git stash save && git pull --rebase && git stash pop; };f"
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	a = add
+	s = status
 	c = commit --verbose
 	ca = commit -a --verbose
 	cm = commit -m
@@ -29,6 +35,15 @@
 	d = diff
 	ds = diff --stat
 	dc = diff --cached
+
+	swd = switch develop
+	swm = switch master
+	stpu = git stash push
+	stpo = git stash pop
+	pl = pull --autostash
+	ps = push
+
+	clean= "!f() { git branch --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d; }; f"
 
 	# list aliases
 	la = "!git config -l | grep alias | cut -c 7-"
@@ -44,9 +59,50 @@
 
 	#This one is also usefule to run merge test before merge to check for any conflicts.
 	mergetest = "!f(){ git merge --no-commit --no-ff \"$1\"; git merge --abort; echo \"Merge aborted\"; };f "
+	staash = stash --all
+	diff-image = "!f() { cd -- \"${GIT_PREFIX:-.}\"; GIT_DIFF_IMAGE_ENABLED=1 git diff \"$@\"; }; f"
 [pull]
-	rebase = true
+	rebase = false
 [gpg]
 	program = /usr/local/bin/gpg
+	format = ssh
 [commit]
 	gpgsign = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Users/michael/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[init]
+	defaultBranch = master
+[credentials]
+	helper = osxkeychain
+[advice]
+	detachedHead = false
+	skippedCherryPicks = false
+[status]
+	showUntrackedFiles = normal
+[submodule]
+	recurse = false
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[fetch]
+	writeCommitGraph = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[rebase]
+	autoStash = true
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[diff "image"]
+	command = ~/development/projects/git-diff-image/git_diff_image
+[diff]
+	tool = bcomp

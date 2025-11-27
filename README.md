@@ -14,3 +14,9 @@ cd dotfiles
 ./3.install.libs.sh
 ./4.install.tools.sh
 ```
+
+# Remote install
+
+```sh
+curl -L https://raw.githubusercontent.com/maluramichael/osx-configs/master/install.sh | bash
+```
