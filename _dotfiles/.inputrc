@@ -1,0 +1,59 @@
+# ============================================================================
+# GNU Readline Configuration
+# ============================================================================
+# This file configures key bindings for readline-based applications:
+# bash, Python REPL, irb, less, bc, gdb, psql, mysql, sqlite3, etc.
+
+# ----------------------------------------------------------------------------
+# Display & Completion Settings
+# ----------------------------------------------------------------------------
+set colored-stats on
+set colored-completion-prefix on
+set completion-prefix-display-length 10
+set page-completions on
+set completion-query-items 350
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set skip-completed-text on
+set mark-symlinked-directories on
+set match-hidden-files off
+
+# Enable bracketed paste mode (safe pasting)
+set enable-bracketed-paste on
+
+# Visual bell instead of audible
+set bell-style visible
+
+# ----------------------------------------------------------------------------
+# Navigation Key Bindings
+# ----------------------------------------------------------------------------
+
+# Home key - multiple formats
+"\e[H": beginning-of-line           # CSI H
+"\e[1~": beginning-of-line          # VT100
+"\e[OH": beginning-of-line          # SS3 H (application mode)
+
+# End key - multiple formats
+"\e[F": end-of-line                 # CSI F
+"\e[4~": end-of-line                # VT100
+"\e[OF": end-of-line                # SS3 F (application mode)
+
+# Page Up/Page Down
+"\e[5~": history-search-backward    # Page Up - search history backward
+"\e[6~": history-search-forward     # Page Down - search history forward
+
+# Delete/Insert keys
+"\e[3~": delete-char                # Delete
+"\e[2~": overwrite-mode             # Insert
+
+# Ctrl+Home/Ctrl+End
+"\e[1;5H": beginning-of-history     # Ctrl+Home
+"\e[1;5F": end-of-history           # Ctrl+End
+
+# Ctrl+Arrow keys for word navigation
+"\e[1;5C": forward-word             # Ctrl+Right
+"\e[1;5D": backward-word            # Ctrl+Left
+
+# Alt+Arrow keys for word navigation (fallback)
+"\e[1;3C": forward-word             # Alt+Right
+"\e[1;3D": backward-word            # Alt+Left

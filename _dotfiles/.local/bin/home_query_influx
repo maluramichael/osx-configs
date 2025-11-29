@@ -1,0 +1,42 @@
+#!/bin/bash
+
+DATABASE_SERVER="http://192.168.2.2:8086"
+DATABASE="vault"
+QUERY_URL="$DATABASE_SERVER/query?pretty=true"
+
+QUERY=""
+JQPATH="."
+
+case $1 in
+
+  grid-usage-now)
+    QUERY="SELECT max(\"value\") FROM \"current_power\" GROUP BY time(1m) ORDER BY time DESC LIMIT 1"
+    JQPATH=".results[].series[].values[][1]"
+    ;;
+
+  pv-production-days)
+    QUERY="SELECT sum(avg) / 12 FROM power WHERE (type = 'production' AND source = 'pv') GROUP BY time(1d)"
+    JQPATH=".results[].series[].values|map(.[1]|round)|reverse"
+    ;;
+
+  pv-production-today)
+    QUERY="SELECT sum(avg) / 12 FROM \"power\" WHERE source='pv' AND type='production' GROUP BY time(1d) ORDER BY time DESC LIMIT 1"
+    JQPATH=".results[].series[].values[][1]|round"
+    ;;
+
+  *)
+    echo -n "unknown"
+    ;;
+esac
+
+
+RESULT=$(curl -G -sS "$QUERY_URL" \
+    --data-urlencode "db=$DATABASE" \
+    --data-urlencode "q=$QUERY")
+
+VALUE=$(echo $RESULT | /usr/local/bin/jq -r $JQPATH)
+
+# echo "QUERY: $QUERY"
+# echo "JQPATH: $JQPATH"
+# echo "RESULT: $RESULT"
+echo "$VALUE"

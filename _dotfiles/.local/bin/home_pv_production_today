@@ -1,0 +1,8 @@
+#!/bin/bash
+
+QUERY="q=SELECT sum(avg) / 12 FROM \"power\" WHERE source='pv' AND type='production' GROUP BY time(1d) ORDER BY time DESC LIMIT 1"
+JQ=( /usr/local/bin/jq -r ".results[].series[].values[][1]|round" )
+RESPONSE=$($HOME/.local/bin/home_query_influx "$QUERY")
+VALUE=$(echo "$($HOME/.local/bin/home_query_influx "$QUERY")" | "${JQ[@]}" )
+
+echo "☀️ $VALUE Wh"

@@ -1,0 +1,12 @@
+alfred
+bartender
+discord
+firefox
+brave-browser
+iterm2
+jetbrains-toolbox
+nextcloud
+slack
+spotify
+vlc
+mpv

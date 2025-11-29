@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if ! networksetup -getairportnetwork en0 | grep -q malura; then
+    echo "📶"
+    exit 1
+fi
+
+echo "🔌"
+echo "---"
+echo "Production: $($HOME/.local/bin/home_query_influx pv-production-today) Wh | color=green href=https://sma3006162062.local/"
+echo "Usage now: $($HOME/.local/bin/home_query_influx grid-usage-now) W | color=crimson"

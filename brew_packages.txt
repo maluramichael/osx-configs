@@ -1,0 +1,15 @@
+ansible
+autoconf
+automake
+curl
+fd
+ffmpeg
+fzf
+git
+htop
+imagemagick
+jq
+lua
+tmux
+wget
+zsh
