@@ -1,21 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git clone:*)",
-      "Bash(find:*)",
-      "WebFetch(domain:stackoverflow.com)",
-      "Bash(ln:*)",
-      "Bash(vim:*)",
-      "Bash(tmux:*)",
-      "Bash(list-keys:*)",
-      "Bash(/usr/local/bin/tmux:*)",
-      "Bash(/opt/homebrew/bin/tmux:*)",
-      "Bash(nvim:*)",
-      "Bash(git init:*)",
-      "Bash(git remote add:*)",
-      "Bash(git fetch:*)",
-      "Bash(git pull:*)",
-      "Bash(git add:*)"
+      "Bash(git checkout:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
